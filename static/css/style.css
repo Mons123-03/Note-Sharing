@@ -1,0 +1,427 @@
+/* ===== NoteShare Design System ===== */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+    --ink:       #0f1117;
+    --ink-soft:  #4a5568;
+    --surface:   #ffffff;
+    --surface-2: #f7f8fc;
+    --border:    #e2e8f0;
+    --accent:    #3b5bdb;
+    --accent-2:  #4dabf7;
+    --success:   #2f9e44;
+    --warn:      #e67700;
+    --danger:    #c92a2a;
+    --star:      #f59f00;
+    --radius:    10px;
+    --shadow:    0 2px 12px rgba(0,0,0,0.07);
+    --shadow-hover: 0 8px 28px rgba(59,91,219,0.13);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    font-family: 'Sora', sans-serif;
+    background: var(--surface-2);
+    color: var(--ink);
+    min-height: 100vh;
+}
+
+/* ── Navbar ── */
+.ns-nav {
+    background: var(--ink) !important;
+    border-bottom: 2px solid var(--accent);
+    padding: 0;
+    z-index: 1000;
+}
+
+
+
+.ns-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #fff !important;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+.ns-brand i { color: var(--accent-2); }
+
+.ns-search {
+    max-width: 380px;
+    width: 100%;
+    gap: 6px;
+}
+.ns-search .form-control {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    border-radius: var(--radius);
+    font-size: 0.rem;
+}
+.ns-search .form-control::placeholder { color: rgba(255,255,255,0.4); }
+.ns-search .form-control:focus {
+    background: rgba(255,255,255,0.14);
+    box-shadow: none;
+    border-color: var(--accent-2);
+    color: #fff;
+}
+
+.ns-btn-search {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    padding: 6px 14px;
+    font-size: 0.9rem;
+}
+.ns-btn-search:hover { background: #2f4ac5; color: #fff; }
+
+.ns-user-badge {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.user-name {
+    font-size: 90px;   /* increase size */
+    font-weight: 500;
+}
+
+.user-name b {
+    font-weight: 700;
+}
+
+/* ── Buttons ── */
+.ns-btn-primary {
+    background: var(--accent);
+    color: #fff !important;
+    border: none;
+    border-radius: var(--radius);
+    padding: 7px 18px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: background 0.18s, transform 0.12s;
+    text-decoration: none;
+    
+}
+.ns-btn-primary:hover { background: #2f4ac5; transform: translateY(-1px); }
+
+.ns-btn-ghost {
+    background: transparent;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: var(--radius);
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    transition: background 0.15s;
+    text-decoration: none;
+    display: inline-flex; align-items: center;
+}
+.ns-btn-ghost:hover { background: rgba(95, 221, 57, 0.1); }
+
+/* Inside page — override for light bg context */
+.container .ns-btn-ghost {
+    color: var(--ink) !important;
+    border-color: var(--border);
+}
+.container .ns-btn-ghost:hover { background: var(--surface-2); }
+
+/* ── Flash alerts ── */
+.ns-alert {
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    border: none;
+    border-left: 4px solid currentColor;
+}
+
+/* ── Upload Panel ── */
+.ns-upload-panel {
+    background: var(--surface);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+.ns-upload-header {
+    background: linear-gradient(135deg, var(--accent) 0%, #5c7cfa 100%);
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 8px;
+}
+.ns-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: block;
+}
+.ns-input {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    background: var(--surface);
+    color: var(--ink);
+}
+.ns-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59,91,219,0.1);
+}
+
+/* ── Section Title ── */
+.ns-section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+.ns-count-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 99px;
+    font-size: 0.7rem;
+    padding: 1px 8px;
+    margin-left: 8px;
+    vertical-align: middle;
+    font-family: 'DM Mono', monospace;
+}
+
+/* ── Filter Pills ── */
+.ns-filter-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    border-radius: 99px;
+    font-size: 0.78rem;
+    padding: 3px 12px;
+    transition: all 0.15s;
+}
+.ns-filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.ns-filter-active {
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    color: #fff;
+    border-radius: 99px;
+    font-size: 0.78rem;
+    padding: 3px 12px;
+}
+
+/* ── Note Cards ── */
+.ns-card {
+    background: var(--surface);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.ns-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* File type color bands */
+.ns-card-top {
+    padding: 10px 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+}
+.ns-ext-pdf  { background: #fff0f0; border-bottom-color: #ffc9c9; }
+.ns-ext-docx { background: #e8f4ff; border-bottom-color: #a5d8ff; }
+.ns-ext-pptx { background: #fff4e6; border-bottom-color: #ffd8a8; }
+.ns-ext-txt  { background: #f3f0ff; border-bottom-color: #d0bfff; }
+.ns-ext-png, .ns-ext-jpg, .ns-ext-jpeg { background: #ebfbee; border-bottom-color: #b2f2bb; }
+
+.ns-ext-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--ink);
+    background: rgba(255,255,255,0.8);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 8px;
+    letter-spacing: 0.05em;
+}
+.ns-ext-badge-lg {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    background: rgba(255,255,255,0.8);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 16px;
+    letter-spacing: 0.05em;
+}
+
+.ns-subject-pill {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(59,91,219,0.08);
+    border-radius: 99px;
+    padding: 2px 10px;
+}
+
+.ns-card-body { padding: 14px; flex: 1; display: flex; flex-direction: column; }
+.ns-card-title {
+    font-size: 0.93rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.ns-card-meta {
+    font-size: 0.76rem;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+}
+
+.ns-card-footer {
+    padding: 10px 14px;
+    border-top: 1px solid var(--border);
+    background: var(--surface-2);
+    display: flex; gap: 8px; align-items: center; justify-content: flex-end;
+}
+
+/* ── Star Rating Display (read-only average) ── */
+.ns-stars-display {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 6px;
+}
+.ns-stars-display i {
+    font-size: 0.82rem;
+    color: var(--star);
+}
+.ns-stars-display i.bi-star {
+    color: #d1d5db;
+}
+.ns-rating-val {
+    font-family: 'DM Mono', monospace;
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    margin-left: 5px;
+    line-height: 1;
+}
+
+/* ── Interactive Star Picker ── */
+.ns-rate-form { margin-bottom: 2px; }
+
+.ns-rate-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* Reverse-order RTL trick for pure CSS cascade hover */
+.ns-rate-row {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 2px;
+}
+
+.ns-star-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    line-height: 1;
+    color: #d1d5db;
+    font-size: 1.05rem;
+    transition: color 0.1s, transform 0.1s;
+    display: flex;
+    align-items: center;
+}
+.ns-star-btn i { pointer-events: none; }
+
+/* On hover of a star: fill it AND all stars to its left (which are to the right in DOM due to RTL) */
+.ns-rate-row:hover .ns-star-btn { color: #d1d5db; }
+.ns-star-btn:hover,
+.ns-star-btn:hover ~ .ns-star-btn {
+    color: var(--star) !important;
+    transform: scale(1.18);
+}
+.ns-star-btn:focus { outline: none; color: var(--star); }
+
+/* ── Empty State ── */
+.ns-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--ink-soft);
+}
+.ns-empty-state i { font-size: 3rem; display: block; margin-bottom: 12px; opacity: 0.4; }
+
+/* ── Auth Card ── */
+.ns-auth-card {
+    background: var(--surface);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.ns-link { color: var(--accent); font-weight: 600; text-decoration: none; }
+.ns-link:hover { text-decoration: underline; }
+
+/* ── Detail Page ── */
+.ns-detail-card {
+    background: var(--surface);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+.ns-detail-header {
+    padding: 16px 20px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+}
+
+/* ── Comments ── */
+.ns-comment-item {
+    display: flex;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+}
+.ns-comment-item:last-child { border-bottom: none; }
+.ns-comment-avatar {
+    width: 34px; height: 34px; flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+.ns-comment-body { font-size: 0.875rem; }
+.ns-comment-form textarea { font-size: 0.875rem; resize: none; }
+
+/* ── Footer ── */
+.ns-footer {
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+}
